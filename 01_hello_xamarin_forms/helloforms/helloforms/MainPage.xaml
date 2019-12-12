@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="helloforms.MainPage">
+    <!-- Place new controls here -->
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="55"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <ImageButton x:Name="imgbanana"
+                     Source="banana"
+                     HorizontalOptions="CenterAndExpand"
+                     VerticalOptions="CenterAndExpand"
+                     Margin="50"
+                     Grid.Column="0"
+                     Grid.Row="0"
+                     Grid.ColumnSpan="2"
+                     Grid.RowSpan="2"
+                     IsVisible="false"
+                     />
+
+
+        <Label x:Name="lbl_ola" Text="Olá!"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="CenterAndExpand"
+               FontSize="Title"
+               FontAttributes="Bold"
+               TextColor="DarkSlateGray"
+               Margin="50"
+               Grid.Column="0"
+               Grid.Row="0"
+               Grid.ColumnSpan="2"
+               Grid.RowSpan="2"
+               />
+
+
+        <Button x:Name="btn_touch"
+                Text="Touch here!"
+                TextColor="Black"
+                HorizontalOptions="StartAndExpand"
+                BackgroundColor="LightGreen"
+                FontSize="20"
+                Padding="8"
+                Clicked="btn_touch_Clicked"
+                Grid.Column="0"
+                Grid.Row="2"
+                />
+
+        <Button x:Name="btn_dont_touch"
+                Text="Don't touch here!"
+                TextColor="Black"
+                HorizontalOptions="End"
+                BackgroundColor="LightSalmon"
+                FontSize="Body"
+                Padding="8"
+                Clicked="btn_dont_touch_Clicked"
+                Grid.Column="1"
+                Grid.Row="2"
+                />
+    </Grid>
+
+
+
+
+</ContentPage>
