@@ -29,7 +29,7 @@
                      />
 
 
-        <Label x:Name="lbl_ola" Text="Olá!"
+        <Label x:Name="lbl_ola" Text="Hello!"
                HorizontalOptions="CenterAndExpand"
                VerticalOptions="CenterAndExpand"
                FontSize="Title"
