@@ -7,29 +7,25 @@ namespace SimpleNotes.ViewModels
 {
     public class MainPageViewModel : INotifyPropertyChanged
     {
-
-
         public MainPageViewModel()
         {
-            EraseCommand = new Command(() => { TheNote = string.Empty; });
+            EraseCommand = new Command(() => TheNote = string.Empty);
 
             SaveCommand = new Command(() =>
             {
-                AllNotes.Add(TheNote);
-                TheNote = string.Empty;
+                if (!string.IsNullOrEmpty(TheNote))
+                {
+                    AllNotes.Add(TheNote);
+                    TheNote = string.Empty;
+                }
             });
         }
 
 
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-
         public ObservableCollection<string> AllNotes { get; set; } = new ObservableCollection<string>();
 
-
         string theNote;
-
         public string TheNote
         {
             get => theNote;
@@ -37,16 +33,14 @@ namespace SimpleNotes.ViewModels
             set
             {
                 theNote = value;
-                var args = new PropertyChangedEventArgs(nameof(TheNote));
-
-                PropertyChanged?.Invoke(this, args);
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TheNote)));
             }
         }
 
 
         public Command SaveCommand { get; }
-
         public Command EraseCommand { get; }
 
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }
