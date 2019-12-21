@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 
+             
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true"
              ios:Page.LargeTitleDisplay="Always"
@@ -14,16 +15,20 @@
              x:Class="SimpleNotes.MainPage"
              BackgroundColor="PowderBlue">
 
+    <!--The above element includes necessary stuff (ios: and xmln:ios) to cope
+        with the screen notch on recent iPhones -->
 
     <ContentPage.BindingContext>
         <local:MainPageViewModel/>
     </ContentPage.BindingContext>
 
+
+
     <Grid BackgroundColor="White">
         <Grid.RowDefinitions>
             <RowDefinition Height=".4*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height=".5*"/>
+            <RowDefinition Height=".2*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -47,20 +52,32 @@
                 Text="{Binding TheNote}"
                />
 
+
+
         <Button Text="Erase"
                 Grid.Column="0"
                 Grid.Row="2"
+                BackgroundColor="Red"
+                TextColor="White"
+                FontAttributes="Bold"
+                FontSize="Large"
+                Margin="3"
                 Command="{Binding EraseCommand}"
             />
 
         <Button Text="Save"
                 Grid.Column="1"
                 Grid.Row="2"
+                BackgroundColor="Green"
+                FontAttributes="Bold"
+                FontSize="Large"
+                TextColor="White"
+                Margin="3"
                 Command="{Binding SaveCommand}"
             />
 
 
-
+        <!--Create the notes list below the buttons-->
 
         <CollectionView ItemsSource="{Binding AllNotes}" Grid.Row="3" Grid.ColumnSpan="2">
             <CollectionView.ItemTemplate>
