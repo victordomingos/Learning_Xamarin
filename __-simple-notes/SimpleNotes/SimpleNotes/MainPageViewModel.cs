@@ -7,8 +7,25 @@ namespace SimpleNotes.ViewModels
 {
     public class MainPageViewModel : INotifyPropertyChanged
     {
+        public Command SelectedNoteChangedCommand { get; }
+
+        string selectedNote;
+        public string SelectedNote { get; set; }
+
         public MainPageViewModel()
         {
+            AllNotes = new ObservableCollection<string>();
+
+            SelectedNoteChangedCommand = new Command(async () =>
+            {
+                var detailVM = new DetailPageViewModel(SelectedNote);
+                var detailPage = new DetailPage();
+                detailPage.BindingContext = detailVM;
+
+                await Application.Current.MainPage.Navigation.PushAsync(detailPage);
+            });
+
+
             EraseCommand = new Command(() => TheNote = string.Empty);
 
             SaveCommand = new Command(() =>
@@ -23,9 +40,9 @@ namespace SimpleNotes.ViewModels
 
 
 
-        public ObservableCollection<string> AllNotes { get; set; } = new ObservableCollection<string>();
+        public ObservableCollection<string> AllNotes { get; set; }
 
-        string theNote;
+        private string theNote;
         public string TheNote
         {
             get => theNote;

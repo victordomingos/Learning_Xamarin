@@ -26,9 +26,9 @@
 
     <Grid BackgroundColor="White">
         <Grid.RowDefinitions>
-            <RowDefinition Height=".4*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height=".2*"/>
+            <RowDefinition Height=".3*"/>
+            <RowDefinition Height=".5*"/>
+            <RowDefinition Height=".3*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -60,8 +60,8 @@
                 BackgroundColor="Red"
                 TextColor="White"
                 FontAttributes="Bold"
-                FontSize="Large"
-                Margin="3"
+                FontSize="Small"
+                Margin="2"
                 Command="{Binding EraseCommand}"
             />
 
@@ -70,20 +70,27 @@
                 Grid.Row="2"
                 BackgroundColor="Green"
                 FontAttributes="Bold"
-                FontSize="Large"
+                FontSize="Small"
                 TextColor="White"
-                Margin="3"
+                Margin="2"
                 Command="{Binding SaveCommand}"
             />
 
 
         <!--Create the notes list below the buttons-->
 
-        <CollectionView ItemsSource="{Binding AllNotes}" Grid.Row="3" Grid.ColumnSpan="2">
+        <CollectionView ItemsSource="{Binding AllNotes}"
+                        Grid.Row="3"
+                        Grid.ColumnSpan="2" 
+
+                        SelectionMode="Single"
+                        SelectedItem="{Binding SelectedNote}"
+                        SelectionChangedCommand="{Binding SelectedNoteChangedCommand}"
+                        >
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout>
-                        <Frame>
+                        <Frame Margin="2">
                             <Label Text="{Binding .}"/>
                         </Frame>
                     </StackLayout>

@@ -22,13 +22,15 @@
             </Grid.RowDefinitions>
 
             <Label Text="{Binding NoteText}"
+                   TextColor="Black"
+                   BackgroundColor="AliceBlue"
                    FontSize="Title"
-                   Grid.Row="0"
+                   Grid.Row="1"
                    VerticalOptions="CenterAndExpand"
                    HorizontalOptions="CenterAndExpand"/>
 
             <Button Text="Dismiss"
-                    Grid.Row="1"
+                    Grid.Row="2"
                     Command="{Binding DismissPageCommand}"/>
         </Grid>
     </ContentPage.Content>

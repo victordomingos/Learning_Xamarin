@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="buttons.MyContentPage"
+             
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             ios:Page.LargeTitleDisplay="Always"
+
+             BackgroundColor="Black"
+    >
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS"      Value="10, 20, 10, 5" />
+            <On Platform="Android"  Value="10, 0, 10, 5" />
+        </OnPlatform>
+    </ContentPage.Padding>
+
+    <ContentPage.Content>
+        <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand">
+
+            <StackLayout>
+                <Label Text="Hi there!"
+                   FontSize="Title"
+                   TextColor="White"
+                   VerticalOptions="Center"
+                   HorizontalOptions="CenterAndExpand"
+                   />
+                <Label FontSize="Medium"
+                   TextColor="LightGray"
+                   VerticalOptions="End"
+                   HorizontalOptions="CenterAndExpand"
+                   Margin="30">
+
+                    <Label.Text>
+                        This is a multi-line label, which allows us to place much more text on the screen.
+                    </Label.Text>
+                </Label>
+                <Button Text="Click here!"
+                    FontSize="Large"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Fill"
+                    Clicked="ButtonClicked" />
+
+                <Entry Placeholder="Username" VerticalOptions="Center" Keyboard="Text" />
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="End">
+                    <BoxView Color="Silver" WidthRequest="100" HeightRequest="100" HorizontalOptions="StartAndExpand" VerticalOptions="Fill" />
+
+
+                    <Image Source="pear.png" WidthRequest="100" HorizontalOptions="End" VerticalOptions="End">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="PearTapped"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+
+
+            </StackLayout>
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>
